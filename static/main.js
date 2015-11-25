@@ -2,6 +2,18 @@ var originX = 999;
 var originY = -1075;
 
 $(function() {
+    $(window).bind('mousewheel DOMMouseScroll', function(event){
+        var zoom = $("#container").css('zoom');
+        if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+            zoom -= 1;
+            if(zoom <= 2) zoom = 2;
+            $("#container").css('zoom', zoom);
+        } else {
+            zoom += 1;
+            if(zoom >= 15) zoom = 15;
+            $("#container").css('zoom', zoom);
+        }
+    });
     $(window).resize(function() {
         $("#canvas").height($(window).height());
         getCanvas();
@@ -42,7 +54,7 @@ function put(x, y) {
     var cy = y * 50;
     var px = x + originX;
     var py = y + originY;
-    var src = "http://192.168.99.100/1608/" + px + ":" + py + "+s.png";
+    var src = "/1608/" + px + ":" + py + "+s.png";
     var img = $("<img />").attr("src", src).css("left", cx).css("top", cy).attr('id', x + '-' + y).data('x', x).data('y', y);
     $("#container").append(img);
 }
