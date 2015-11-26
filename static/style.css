@@ -12,7 +12,6 @@ body, html {
 
 #container {
     position: absolute;
-    zoom: 4;
 }
 
 #container img {
