@@ -22,7 +22,7 @@ $(function() {
             break;
 
             case 39: // right
-            posX -= moveSpeed;
+            posX += moveSpeed;
             break;
 
             case 40: // down
